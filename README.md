@@ -1,8 +1,8 @@
-##Predix Transform 2016
+# Predix Transform 2016
 
 
 *****************************************************************************************************
-##Theme
+## Theme
 ******************************************************************************************************
 - Net energy efficiency (%) for a gas turbine plant.
 - Heat rate above threshold events
@@ -16,18 +16,18 @@ Efficiency % = (3412/avg(heat rate) )*100
 
 
 *****************************************************************************************************
-##Architecture
+## Architecture
 ******************************************************************************************************
-![alt tag](https://github.build.ge.com/OperationsOptimization/hackathon/blob/master/architecture.png)
+![alt tag](https://github.com/vgandrapuGE/predixTransform/blob/master/architecture.png)
 
 ******************************************************************************************************
-##Data sets [APM Asset]
+## Data sets [APM Asset]
 ******************************************************************************************************
 Asset model with tags for fuel flow, heatrate, power output and efficiency.
 [Any other constants or static data required for heat rate calculation]
 
 ******************************************************************************************************
-##Backend [APM Asset, CloudFoundry, Postgres, APM Timeseries]
+## Backend [APM Asset, CloudFoundry, Postgres, APM Timeseries]
 ******************************************************************************************************
 1. Ingest Asset model dataset into APM
 2. proxy REST Service to ingest events from predix machine.
@@ -36,7 +36,7 @@ Asset model with tags for fuel flow, heatrate, power output and efficiency.
 
 
 ******************************************************************************************************
-##EDGE Functionality [Predix Machine, Predix Timeseries WS gateway]
+## EDGE Functionality [Predix Machine, Predix Timeseries WS gateway]
 ******************************************************************************************************
 
 1. Generate interval fuel flow, power output data (every sec.,) using Intel Edison board
@@ -45,7 +45,7 @@ Asset model with tags for fuel flow, heatrate, power output and efficiency.
 4. Ingest events using CF proxy REST service.
 
 ******************************************************************************************************
-##Visualization
+## Visualization
 ******************************************************************************************************
 1. Asset Browser using APM asset services
 2. Widget to show Energy Efficiency aggregated for a plant, segment (fleet), or equipment (asset). 
@@ -56,7 +56,7 @@ uses Websocket Client.
 4. visualization of contributing factors for the alerts (timeseries tags)  with 'insight' link to drilldown further. When clicked show fuel flow, heat rate data in a timeseries chart
 
 ******************************************************************************************************
-##Comments and Feedback
+## Comments and Feedback
 ******************************************************************************************************
 Visit http://devpost.com/software/predix-decoded
 
