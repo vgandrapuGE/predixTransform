@@ -1,0 +1,17 @@
+[
+   {  
+     "nodeName": "TAG_GRACIA_TEMPERATURE",  
+     "nodeType": "Temperature",  
+     "nodePin": 0
+   },
+   {
+     "nodeName": "TAG_GRACIA_FUELFLOW",  
+     "nodeType": "RotaryAngle",
+     "nodePin": 1
+   },
+   {  
+      "nodeName": "TAG_GRACIA_POWER",  
+      "nodeType": "RotaryAngle",  
+      "nodePin": 2
+   }
+]

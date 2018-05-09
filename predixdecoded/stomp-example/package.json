@@ -1,0 +1,38 @@
+{
+  "name": "predix-starter-ui",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "author": {
+    "name": "Predix Experience",
+    "email": "Predix.experience@ge.com"
+  },
+  "scripts": {
+    "start": "grunt serve"
+  },
+  "keywords": [
+    "predix-starter-ui"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "load-grunt-tasks": "^3.2.0",
+    "connect-modrewrite": "^0.7.9",
+    "glob": "^5.0.13",
+    "grunt-autoprefixer": "^3.0.3",
+    "grunt-config": "^0.2.2",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-connect": "^0.7.1",
+    "grunt-contrib-watch": "~v0.6.1",
+    "http-rewrite-middleware": "^0.1.6",
+    "json-proxy": "^0.9.1",
+    "open": "0.0.4",
+    "request": "^2.58.0",
+    "time-grunt": "^0.4.0"
+  },
+  "dependencies": {
+    "yamljs": "^0.2.8"
+  }
+}

@@ -1,0 +1,13 @@
+env:
+  protocol: https
+  domain: run.aws-usw02-pr.ice.predix.io
+  SPRING_PROFILES_ACTIVE: cloud
+  MEMORY_LIMIT: 1G
+
+
+applications:
+- name: creamteam-gateway
+  memory: 2G
+  instances: 1
+  path: ./target/creamteam-gateway-0.0.1-SNAPSHOT.jar
+  timeout: 180

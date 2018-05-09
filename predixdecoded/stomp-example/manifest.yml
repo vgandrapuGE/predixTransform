@@ -1,0 +1,21 @@
+---
+applications:
+  - name: predix-isk-ui
+    buildpack: predix_openresty_buildpack
+    path: dist
+    memory: 64M
+    stack: cflinuxfs2
+    services:
+        - starter_redis
+    env:
+        CLIENT_ID: 
+        # CLIENT_SECRET is base 64 of clientId:password
+        CLIENT_SECRET:
+        # UAA_URI is the https://<uaa url>
+        UAA_URI:
+        TIMESERIES_QUERY_URI: https://time-series-store-predix.run.aws-usw02-pr.ice.predix.io
+        # TIMESERIES_INSTANCE_ID is the predix zone id of time series service
+        TIMESERIES_INSTANCE_ID:
+        # GATEWAY_URI must be pointed to the Gateway service URL. e.g. https://predix-isk-gateway.run.aws-usw02-pr.ice.predix.io
+        GATEWAY_URI: https://sample-gateway.run.aws-usw02-pr.ice.predix.io
+        REDIS: redis-1

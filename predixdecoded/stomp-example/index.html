@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ISK UI</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/sockjs/sockjs.js"></script>
+    <script src="bower_components/stomp-websocket/lib/stomp.js"></script>
+    <script src="bower_components/ng-stomp/dist/ng-stomp.min.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/highcharts/highstock.js"></script>
+
+    <script src="js/libs/epoch.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="js/services/UserService.js"></script>
+    <script src="js/services/HTTPService.js"></script>
+    <script src="js/services/TimeSeriesService.js"></script>
+
+    <script src="js/ctrls/ChartCtrl.js"></script>
+    <script src="js/ctrls/HistoricalCtrl.js"></script>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="bower_components/bootstrap-flat/css/bootstrap-flat.css"/>
+    <link rel="stylesheet" href="css/epoch.css"/>
+    <link rel="stylesheet" href="css/animation.css"/>
+</head>
+<body ng-app="Application" ng-controller="MainCtrl">
+<nav class="navbar navbar-default  navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ng-click="goFullScreen()" href="#">ISK UI</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="" ng-class="{'active': isLiveMode }">
+                    <a ng-click="toogle()" href="">
+                        Live Data
+                    </a>
+                </li>
+                <li ng-class="{'active': !isLiveMode }">
+                    <a ng-click="toogle()" href="">
+                        History Data
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false"> {{user.user_name}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron" id="main-container">
+        <i ng-show="!isLiveMode" ng-click="toogleFullScreen('main')" class="glyphicon glyphicon-fullscreen pull-right full-icon"></i>
+
+        <div ng-animate="'fade'" id="history-container" ng-show="!isLiveMode" class="row" ng-controller="HistoricalCtrl">
+
+            <div class="col-md-3">
+                <div class="dropdown">
+                    <button style="width: 100%" class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button"
+                            aria-haspopup="true"
+                            aria-expanded="false">{{selectedTag}} <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="tag in tags" ng-click="selectTag(tag)"><a href="#">{{tag}}</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-addon">From</span>
+                    <input ng-click="openMinPopup()" ng-readonly="true" type="text" class="form-control"
+                           uib-datepicker-popup="{{format}}" ng-model="minDate"
+                           is-open="minPopup.opened" datepicker-options="{'maxDate': maxDate }" ng-required="true"
+                           close-text="Close" alt-input-formats="altInputFormats"/>
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="openMinPopup()">
+                    <i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <p class="input-group">
+                    <span class="input-group-addon">To</span>
+                    <input ng-click="openMaxPopup()" ng-readonly="true" type="text" class="form-control"
+                           uib-datepicker-popup="{{format}}" ng-model="maxDate"
+                           is-open="maxPopup.opened"
+                           datepicker-options="{'minDate': minDate}" ng-required="true" close-text="Close"/>
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="openMaxPopup()"><i
+                    class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                </p>
+            </div>
+            <div class="col-md-12">
+                <div id="historyChart" style="position: relative;height: 300px;width: 100%;"></div>
+            </div>
+        </div>
+
+        <div ng-animate="'fade'" ng-show="isLiveMode" ng-controller="ChartCtrl" class="row">
+            <div class="col-md-12 epoch epoch-theme-dark">
+                <div class="col-md-12" id="{{tag}}-container" ng-repeat="tag in tags">
+                    <a href=""><h4 ng-click="toogleFullScreen(tag)">{{tag}}</h4></a>
+                    <div id="chart-{{tag}}" style="position: relative;height: 300px;width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">&copy; 2016 General Electric</p>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,97 @@
+.dropdown-menu {
+ -webkit-font-smoothing: antialiased;
+  background-clip: padding-box;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.14902);
+  border-radius: 3px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  box-shadow: 1px 2px 2px 0 rgba(90, 90, 90, 0.5);
+  box-sizing: border-box;
+  color: #141414;
+  cursor: pointer;
+  display: none;
+  float: none;
+  font-family: 'GE Inspira Sans', Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  /*left: 0;*/
+  line-height: 21px;
+  list-style: none outside none;
+  margin: 0;
+  min-width: 125px;
+  padding: 0;
+  position: absolute;
+  text-align: left;
+  /*top: 21px;*/
+  /*width: 125px;*/
+  z-index: 1000;
+
+  li {
+    padding: 0.2rem 0;
+    :hover {
+      background-color: #f7f7fc !important;
+      color: #141414 !important;
+    }
+    > a {
+        display: block;
+        padding: 0.2rem 1.3rem;
+        line-height: 1.3rem;
+        white-space: nowrap;
+        color: #575757;
+    }
+    > a:hover,
+    > a:focus {
+        background-color: #f7f7fc !important;
+        color: #141414 !important;
+    }
+    i[ng-class^="getItemClass"] { /* Handle ascending/descending in Alerts "Time Received" dropdown */
+      display: inline-block;
+      width: 1.3rem;
+    }
+  }
+}
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu-right {
+  left: auto;
+  right: 0;
+}
+.open > .dropdown-menu {
+  display: block;
+}
+.dropup .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 1px;
+}
+/* TO-DO: Move following rules to different files (".btn"-related and icon-related) */
+.btn-group {
+  position: relative;
+  display: inline-block;
+}
+button.btn.btn-inverse.dropdown-toggle:focus { /* Remove outline from login chevron <button> */
+  outline: none;
+}
+/* ICONS for Dropdown */
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "FontAwesome";
+  display: inline-block;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+}
+li [class^="icon-"],
+li [class*=" icon-"] {
+  display: inline-block;
+  width: 1.25em;
+  text-align: center;
+}
+.icon-ico_ok_sm:before, .icon-ok:before {
+  content: "\f402";
+}

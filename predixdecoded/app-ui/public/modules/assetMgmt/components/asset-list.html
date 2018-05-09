@@ -1,0 +1,31 @@
+<dom-module id="asset-list">
+    <template strip-whitespace>
+        <px-card
+                style="margin-left:0;margin-right:0;margin-bottom:0;margin-top: 0.1rem;padding-bottom:0;">
+                    <px-data-table hide-pagination-control filterable table-rows
+                                   table-data="{{loadData}}">
+                    </px-data-table>
+        </px-card>
+    </template>
+</dom-module>
+
+<script>
+
+        Polymer({
+            is: 'asset-list',
+            /**
+             * Properties block, expose attribute values to the DOM via 'reflect'
+             *
+             * @property properties
+             * @type Object
+             */
+            properties: {
+                loadData: {
+                    type: Array,
+                    notify: true
+                }
+            }
+        })
+
+
+</script>

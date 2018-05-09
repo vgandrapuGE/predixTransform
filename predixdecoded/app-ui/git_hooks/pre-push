@@ -1,0 +1,9 @@
+#!/bin/sh
+echo "------- Pre-push script start --------"
+gulp test:backend
+
+if [ $? -ne 0 ]; then
+  echo "Error while testing the code"
+  exit 1
+fi
+echo "------- Pre-push script end ----------"

@@ -1,0 +1,93 @@
+{
+  "name": "microapp",
+  "version": "0.0.1",
+  "repository": "https://github.build.ge.com/demos/microapp",
+  "private": true,
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "main": "app.js",
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.4.0",
+      "angular-animate": "npm:angular-animate@^1.5.8",
+      "angular-messages": "github:angular/bower-angular-messages@^1.5.6",
+      "angular-mocks": "github:angular/bower-angular-mocks@^1.4.0",
+      "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
+      "angular-ui/bootstrap": "npm:angular-ui-bootstrap@^1.2.5",
+      "babel": "npm:babel-core@^5.1.13",
+      "d3": "npm:d3@^4.1.1",
+      "jquery": "npm:jquery@^3.1.0",
+      "moment": "github:moment/moment@^2.10.3",
+      "ng-stomp": "npm:ng-stomp@^0.2.0",
+      "restangular": "github:mgonto/restangular@^1.5.1",
+      "sockjs": "npm:sockjs@^0.3.17",
+      "stompjs": "npm:stompjs@^2.3.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  },
+  "keywords": [
+    "predix-app",
+    "asset-micro-app"
+  ],
+  "devDependencies": {
+    "compression": "^1.6.1",
+    "consolidate": "^0.14.1",
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.0",
+    "gulp-bower": "0.0.11",
+    "gulp-develop-server": "^0.5.1",
+    "gulp-jshint": "^1.12.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-ngdocs": "^0.2.13",
+    "gulp-nodemon": "^2.0.6",
+    "gulp-sass": "^2.2.0",
+    "gulp-shell": "^0.5.2",
+    "gulp-task-listing": "^1.0.1",
+    "istanbul": "^0.4.3",
+    "jasmine-core": "^2.3.4",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0",
+    "json-proxy": "^0.9.1",
+    "jspm": "^0.16.15",
+    "karma": "^0.13.15",
+    "karma-babel-preprocessor": "^5.2.1",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.3.6",
+    "karma-jspm": "^2.0.2",
+    "karma-junit-reporter": "^0.3.2",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-systemjs": "^0.9.0",
+    "karma-verbose-reporter": "^0.0.3",
+    "mocha": "^2.4.5",
+    "node-inspector": "^0.12.7",
+    "path": "^0.12.7",
+    "phantomjs": "^1.9.18",
+    "protractor": "^3.2.0",
+    "request": "^2.65.0",
+    "require-dir": "^0.3.0",
+    "rimraf": "^2.4.3",
+    "run-sequence": "^1.1.4",
+    "supertest": "^1.2.0",
+    "systemjs-builder": "^0.14.11",
+    "web-component-tester": "^4.2.2",
+    "web-component-tester-istanbul": "^0.10.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-request-proxy": "^2.0.0",
+    "request-promise": "^3.0.0",
+    "serve-static": "^1.10.2"
+  },
+  "scripts": {}
+}

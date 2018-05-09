@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:oauth="http://www.springframework.org/schema/security/oauth2"
+	xmlns:sec="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/security/oauth2 http://www.springframework.org/schema/security/spring-security-oauth2.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	<bean id="oauth2RestTemplate"
+		class="org.springframework.security.oauth2.client.OAuth2RestTemplate">
+		<constructor-arg>
+			<bean
+				class="org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails">
+				<property name="clientId" value="${clientId}" />
+				<property name="clientSecret" value="${clientSecret}" />
+				<property name="accessTokenUri" value="${accessTokenEndpointUrl}" />
+			</bean>
+		</constructor-arg>
+
+		<property name="requestFactory">
+			<bean
+				class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+				<constructor-arg ref="httpClient" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="httpClient" class="org.apache.http.impl.client.DefaultHttpClient">
+		<constructor-arg>
+			<bean class="org.apache.http.impl.conn.PoolingClientConnectionManager" />
+		</constructor-arg>
+	</bean>
+</beans>
+        

@@ -1,0 +1,13 @@
+---
+applications:
+  - name: cream-hackapm
+    host: cream-hackapm
+    domain: run.aws-usw02-pr.ice.predix.io
+    buildpack: https://github.com/cloudfoundry/buildpack-nodejs.git
+    memory: 1GB
+    disk_quota: 1GB
+    command: node app.js
+    path : ./builds/asset-microapp-2.4.0-SNAPSHOT.zip
+
+    services:
+      - apm-ext-microservice-predixdecoded

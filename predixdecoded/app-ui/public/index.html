@@ -1,0 +1,64 @@
+<script src="bower_components/px/dist/px.min.js"></script>
+
+<!-- Just needed for IE -->
+<script src="bower_components/es6-promise/es6-promise.min.js"></script>
+
+
+<!-- Requires Webcomponents.js polyfill is provided by the page for browsers that don't support html imports -->
+<script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<script src="bower_components/sockjs/sockjs.min.js"></script>
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<!-- import css -->
+<link type="text/css" rel="stylesheet" href="styles/app.css" />
+
+<!-- import polymer components -->
+<link rel="import" href="bower_components/px-theme/px-app.html">
+<link rel="import" href="bower_components/px-theme/px-theme.html">
+<link rel="import" href="bower_components/px-modal/px-modal.html">
+<link rel="import" href="bower_components/px-context-browser/px-context-browser.html">
+<link rel="import" href="bower_components/px-card/px-card.html">
+<link rel="import" href="bower_components/px-data-table/px-data-table.html">
+<link rel="import" href="bower_components/px-tooltip/px-tooltip.html">
+<link rel="import" href="bower_components/px-alert-message/px-alert-message.html">
+<link rel="import" href="bower_components/px-spinner/px-spinner.html">
+<link rel="import" href="bower_components/px-chart/px-chart.html">
+
+
+<link rel="import" href="modules/assetMgmt/components/asset-list.html">
+
+
+<!-- ui-microapp build version: ##BUILDVERSION##  (DO NOT DELETE THIS BLOCK) -->
+<div id="content" ng-controller="AppCtrl as app">
+<section class="pxh-wrapper">
+  <div class="pxh-view-header pxh-view-header&#45;&#45;wide@md pxh-view-header&#45;&#45;narrow@lg">
+    <h1 class="pxh-view-header__title">
+      <a href="#" class="pxh-view-header__title-link">
+        Efficiency Dashboard
+      </a>
+      <div class="pull-right efficiency-label" ng-if="efficiency!='N/A'" ng-cloak>{{efficiency | number:0}}%
+      </div> 
+       <div class="pull-right efficiency-label" ng-if="efficiency=='N/A'" ng-cloak>{{efficiency}}%
+      </div>
+    </h1>
+  </div>
+
+  <section class="pxh-view pxh-view--wide@md pxh-view--narrow@lg">
+    <section >
+      <div role="region" ui-view>
+        <div class="pxh-spinner pxh-spinner--large"></div>
+      </div>
+    </section>
+  </section>
+</section>
+</div>
+
+<script src="jspm_packages/system.js"></script>
+<script src="config.js"></script>
+<script>
+  /* global System */
+  window.addEventListener('HTMLImportsLoaded', function(e) {
+    console.log("Polymer Imports are loaded firing the System import")
+    System.import('main');
+  });
+</script>

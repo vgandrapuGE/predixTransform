@@ -1,0 +1,8 @@
+---
+applications:
+- name: spiderman-heatmap-ingestor 
+  memory: 128M
+  buildpack: nodejs_buildpack
+  command:  node index.js
+env:
+    node_env: cloud
